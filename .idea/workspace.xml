@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4ced153-dabc-4900-ba80-aa390217f069" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TankV1/ConnectToServer.cs" />
-      <change type="DELETED" beforePath="D:\SEM 4\Programming challenge\Client\TankV1\TankV1\ConnectToServer" afterPath="" />
-    </list>
+    <list default="true" id="e4ced153-dabc-4900-ba80-aa390217f069" name="Default" comment="" />
     <ignored path="TankV1.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
