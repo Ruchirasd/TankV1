@@ -8,6 +8,10 @@ namespace TankV1.NewFolder1
 {
     class Connection
     {
+    public static Main(String args[])
+        {
 
+
+        }
     }
 }
