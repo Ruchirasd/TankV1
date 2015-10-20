@@ -12,16 +12,16 @@ namespace TankV1.Client
 {
     class Connection
     {
-        public const string SERVER_IP = "";
-        public const int SERVER_PORT = 6000;
+        public const string SERVER_IP = "localhost";
+        public const int SERVER_PORT = 7000;
         private BinaryWriter writer;
 
         private TcpListener listner;
         private NetworkStream serverStream; 
 
         public void ReceiveData() {
-            listner = new TcpListener(IPAddress.Parse(SERVER_IP),SERVER_PORT);
-            listner.Start();
+                listner = new TcpListener(IPAddress.Parse(SERVER_IP),SERVER_PORT);
+                listner.Start();
 
             }
 
