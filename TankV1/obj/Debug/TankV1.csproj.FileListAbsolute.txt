@@ -6,3 +6,6 @@ C:\Users\Ruchira\Documents\Visual Studio 2015\Projects\TankV1\TankV1\obj\Debug\T
 C:\Users\Ruchira\Documents\Visual Studio 2015\Projects\TankV1\TankV1\obj\Debug\TankV1.csproj.GenerateResource.Cache
 C:\Users\Ruchira\Documents\Visual Studio 2015\Projects\TankV1\TankV1\obj\Debug\TankV1.exe
 C:\Users\Ruchira\Documents\Visual Studio 2015\Projects\TankV1\TankV1\obj\Debug\TankV1.pdb
+D:\SEM 4\Programming challenge\TankV1\TankV1\bin\Debug\TankV1.exe.config
+D:\SEM 4\Programming challenge\TankV1\TankV1\obj\Debug\TankV1.exe
+D:\SEM 4\Programming challenge\TankV1\TankV1\obj\Debug\TankV1.pdb

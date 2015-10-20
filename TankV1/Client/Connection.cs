@@ -13,7 +13,7 @@ namespace TankV1.Client
     class Connection
     {
         public const string SERVER_IP = "";
-        public const int SERVER_PORT = 7000;
+        public const int SERVER_PORT = 6000;
         private BinaryWriter writer;
 
         private TcpListener listner;
