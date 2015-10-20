@@ -45,10 +45,7 @@ namespace TankV1.Client
         }
 
 
-        public static void Main(String []args) {
-            new Connection().ConnectToServer();
         
-        }
 
      }
 }
