@@ -9,7 +9,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace TankV1.Client
+namespace TankV1
 {
     class Connection
     {
@@ -28,6 +28,37 @@ namespace TankV1.Client
                 listner.Start();
                 Console.Write("Server started.....");
 
+                Socket connection;
+               
+                while (true)
+                {
+                    //connection is connected socket
+                    connection = listner.AcceptSocket();
+                    if (connection.Connected)
+                    {
+
+                        this.serverStream = new NetworkStream(connection);
+
+                        SocketAddress sockAdd = connection.RemoteEndPoint.Serialize();
+                        string s = connection.RemoteEndPoint.ToString();
+                        List<Byte> inputStr = new List<byte>();
+
+                        int asw = 0;
+                        while (asw != -1)
+                        {
+                            asw = this.serverStream.ReadByte();
+                            inputStr.Add((Byte)asw);
+                        }
+
+                        String reply = Encoding.UTF8.GetString(inputStr.ToArray());
+                        this.serverStream.Close();
+                        Console.WriteLine(reply);
+
+
+
+                    }
+                }
+
                 
                
 
@@ -39,9 +70,14 @@ namespace TankV1.Client
 
             client = new TcpClient();
             client.Connect(CLIENT_IP,CLIENT_PORT);
+            this.writer = new BinaryWriter(client.GetStream());
+            Byte[] tempStr = Encoding.ASCII.GetBytes("JOIN#");
+            this.writer.Write(tempStr);
+            client.Close();
             if(this.client.Connected){
-                Console.Write("connected......");
+                Console.WriteLine("connected......");
             }
+            
         }
 
 

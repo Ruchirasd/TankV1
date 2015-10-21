@@ -12,3 +12,5 @@ D:\SEM 4\Programming challenge\TankV1\TankV1\obj\Debug\TankV1.pdb
 D:\SEM 4\Programming challenge\TankV1\TankV1\obj\Debug\TankV1.csprojResolveAssemblyReference.cache
 D:\SEM 4\Programming challenge\TankV1\TankV1\obj\Debug\TankV1.Properties.Resources.resources
 D:\SEM 4\Programming challenge\TankV1\TankV1\obj\Debug\TankV1.csproj.GenerateResource.Cache
+D:\SEM 4\Programming challenge\TankV1\TankV1\bin\Debug\TankV1.exe
+D:\SEM 4\Programming challenge\TankV1\TankV1\bin\Debug\TankV1.pdb
