@@ -24,7 +24,8 @@ namespace TankV1
         private NetworkStream serverStream; 
 
         public void ReceiveData() {
-                listner = new TcpListener(IPAddress.Parse(SERVER_IP),SERVER_PORT);
+            listner = new TcpListener(, SERVER_PORT);
+            
                 listner.Start();
                 Console.Write("Server started.....");
 
