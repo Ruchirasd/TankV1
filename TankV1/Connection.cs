@@ -13,7 +13,7 @@ namespace TankV1
 {
     class Connection
     {
-        public const string SERVER_IP = "localhost";
+        public const string SERVER_IP = "127.0.0.1";
         public const int SERVER_PORT = 7000;
         private BinaryWriter writer;
         private const string CLIENT_IP = "localhost";
@@ -24,7 +24,7 @@ namespace TankV1
         private NetworkStream serverStream; 
 
         public void ReceiveData() {
-            listner = new TcpListener(, SERVER_PORT);
+            listner = new TcpListener(IPAddress.Parse(SERVER_IP), SERVER_PORT);
             
                 listner.Start();
                 Console.Write("Server started.....");
