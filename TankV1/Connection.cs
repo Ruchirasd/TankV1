@@ -18,7 +18,7 @@ namespace TankV1
         private BinaryWriter writer;
         private const string CLIENT_IP = "localhost";
         private const int CLIENT_PORT = 6000;
-
+        private GameCanvas g = new GameCanvas();
         private TcpClient client;
         private TcpListener listner;
         private NetworkStream serverStream; 
@@ -53,10 +53,23 @@ namespace TankV1
 
                         String reply = Encoding.UTF8.GetString(inputStr.ToArray());
                         this.serverStream.Close();
-                        Console.WriteLine(reply);
+                       
+                        char val=reply.Substring(0,1)[0];
+                        switch(val){
 
+                            case 'I': g.initialcanvas(reply);
+                                break;
+                            case 'S': g.initiatePlayer(reply);
+                                g.printCanvas();
+                                break;
+                            case 'G' : Console.WriteLine("game refreshed");
 
-
+                                break;
+                            default: Console.WriteLine(reply);
+                                break;
+                        
+                        }
+                       
                     }
                 }
 
@@ -67,16 +80,23 @@ namespace TankV1
 
 
         public void ConnectToServer() {
-            
 
-            client = new TcpClient();
-            client.Connect(CLIENT_IP,CLIENT_PORT);
-            this.writer = new BinaryWriter(client.GetStream());
-            Byte[] tempStr = Encoding.ASCII.GetBytes("JOIN#");
-            this.writer.Write(tempStr);
-            client.Close();
-            if(this.client.Connected){
-                Console.WriteLine("connected......");
+            try
+            {
+                client = new TcpClient();
+                client.Connect(CLIENT_IP, CLIENT_PORT);
+                this.writer = new BinaryWriter(client.GetStream());
+                Byte[] tempStr = Encoding.ASCII.GetBytes("JOIN#");
+                this.writer.Write(tempStr);
+                client.Close();
+                if (this.client.Connected)
+                {
+                    Console.WriteLine("connected......");
+                }
+
+            }catch(SocketException e){
+                Console.WriteLine("unable to connect server");
+            
             }
             
         }
