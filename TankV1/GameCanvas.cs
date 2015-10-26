@@ -44,7 +44,8 @@ namespace TankV1
             string []val=values.Split(';');
             
             string[] cordinates = val[1].Split(',') ;
-            cells[Int32.Parse(cordinates[0]),Int32.Parse(cordinates[1])]=val[0];
+            cells[Int32.Parse(cordinates[0]),Int32.Parse(cordinates[1])]=val[0].Split(':')[1];
+            Console.WriteLine("val" + val[0].Split(':')[1]);
         }
 
 
@@ -54,7 +55,7 @@ namespace TankV1
             values = values.Trim(new char[]{'I', '#', '?'});
             for (int i = 0; i < values.Length;i++ )
             {
-                Console.Write(values[i] +"----");
+                Console.Write(values[i] +"-");
             }
         }
     }
