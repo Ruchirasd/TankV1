@@ -151,11 +151,13 @@ namespace TankV1
                 xy = playerInfo[i,1].Split(',');
                 cells[Int32.Parse(xy[0]), Int32.Parse(xy[1])] = playerInfo[i,0];
             }
-            String bricks = val[(val.Length) - 1];
-            val[4] = val[4].TrimEnd('#');
+            String bricksStr = val[(val.Length) - 1];
+            bricksStr= bricksStr.TrimEnd('#');
+            String[] brickArr = bricksStr.Split(';');
             //update the condition of bricks
-            for (int i = 0; i < bricks.Length;i++) {
-                //not completed
+            for (int i = 0; i < brickArr.Length;i++) {
+                temp = brickArr[i].Split(',');
+                this.updateBricks(temp[0], temp[1], temp[2], i);
             }
             
         }
