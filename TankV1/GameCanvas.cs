@@ -94,6 +94,7 @@ namespace TankV1
             //    Console.Write(values[i] +"-");
             //}
 
+
             //Ru
             String[] val = values.Split(':');
             String[] cordinates;
@@ -139,7 +140,7 @@ namespace TankV1
                 if ((val[i+1])[0] != 'P')
                     break;
                temp=val[i + 1].Split(';');
-                for(int j = 0, j < 7; j++){
+                for(int j = 0; j < 7; j++){
                     playerInfo[i, j] = temp[j];
                 }
 

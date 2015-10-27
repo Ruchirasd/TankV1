@@ -52,7 +52,8 @@ namespace TankV1
                         }
 
                         String reply = Encoding.UTF8.GetString(inputStr.ToArray());
-                    Console.Write(reply);
+
+                    //Console.Write(reply);
                         
                         this.serverStream.Close();
                     switch (reply) {
