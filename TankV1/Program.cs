@@ -19,6 +19,7 @@ namespace TankV1
         {
 
             //Console.WriteLine("1");
+
             //Connection c = new Connection();
             //c.ConnectToServer();
             //c.ReceiveData();

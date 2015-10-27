@@ -12,6 +12,8 @@ namespace TankV1
             String str = "S:frt:456:k;56;dfg:78#";
             Console.Write(str);
             Console.WriteLine();
+            if(str[0]=='S')
+                Console.Write("Yes ");
             Console.Write(str.TrimEnd('#'));
             String[] arr = str.Split(';');
             //for (int j = 0; j < arr.Length; j++)

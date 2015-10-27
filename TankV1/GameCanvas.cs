@@ -12,6 +12,8 @@ namespace TankV1
 
     {
         string[,] cells = new string[20,20];
+        //
+        string[,] bricksCondition;
 
 
         public GameCanvas() {
@@ -48,6 +50,7 @@ namespace TankV1
 
                 case 'I':
                     this.initialcanvas(reply);
+                    this.printCanvas();
                     break;
                 case 'S':
                     this.initiatePlayer(reply);
@@ -76,6 +79,7 @@ namespace TankV1
             //Ru
             String[] val = values.Split(':');
             String[] cordinates = val[2].Split(',') ;
+            Console.Write("Lenght of cordinte arr" + cordinates.Length);
             cells[Int32.Parse(cordinates[0]), Int32.Parse(cordinates[1])] = val[1];
 
         }
@@ -99,12 +103,15 @@ namespace TankV1
                 if (i == 4)
                     val[4] = val[4].TrimEnd('#');
                 cordinates = val[i].Split(';');
+                int count=0;
                 for(int j = 0; j < cordinates.Length; j++)
                 {
                     xy = cordinates[j].Split(',');
                     switch (j) {
                         case 2:
                             cells[Int32.Parse(xy[0]), Int32.Parse(xy[1])] = "B";
+                            this.updateBricks(xy[0], xy[1], "0", count);
+                            count++;
                             break;
                         case 3:
                             cells[Int32.Parse(xy[0]), Int32.Parse(xy[1])] = "S";
@@ -123,12 +130,47 @@ namespace TankV1
 
         public void globalUpdate(String values)
         {
+            String[] val = values.Split(':');
+            String[,] playerInfo = new String[5,7];
+            String[] temp;
 
+            //Store player infor in a 2D array
+            for (int i = 0; i < 5; i++) {
+                if ((val[i+1])[0] != 'P')
+                    break;
+               temp=val[i + 1].Split(';');
+                for(int j = 0, j < 7; j++){
+                    playerInfo[i, j] = temp[j];
+                }
+
+            }
+
+            String[] xy;
+            //update canvas according to player position
+            for (int i = 0; i < 5; i++) {
+                xy = playerInfo[i,1].Split(',');
+                cells[Int32.Parse(xy[0]), Int32.Parse(xy[1])] = playerInfo[i,0];
+            }
+            String bricks = val[(val.Length) - 1];
+            val[4] = val[4].TrimEnd('#');
+            //update the condition of bricks
+            for (int i = 0; i < bricks.Length;i++) {
+                //not completed
+            }
+            
+        }
+
+        public void updateBricks(String x, String y, String condition, int count ) {
+            String[] temp = new string[3] { x,y,condition};
+            for (int i = 0; i < 3; i++) {
+                bricksCondition[count, i] = temp[i];
+            }
+            
         }
 
 
 
-
+   
 
     }
 }
