@@ -18,14 +18,15 @@ namespace TankV1
         static void Main()
         {
 
-            Console.WriteLine("1");
+            //Console.WriteLine("1");
+            //Connection c = new Connection();
+            //c.ConnectToServer();
+            //c.ReceiveData();
 
-            Connection c = new Connection();
+            Test t = new Test();
 
-           c.ConnectToServer();
-           c.ReceiveData();
-           
-           
+
+
         }
     }
 }

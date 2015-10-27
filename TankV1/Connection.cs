@@ -52,23 +52,26 @@ namespace TankV1
                         }
 
                         String reply = Encoding.UTF8.GetString(inputStr.ToArray());
-                        this.serverStream.Close();
-                       
-                        char val=reply.Substring(0,1)[0];
-                        switch(val){
-
-                            case 'I': g.initialcanvas(reply);
-                                break;
-                            case 'S': g.initiatePlayer(reply);
-                                g.printCanvas();
-                                break;
-                            case 'G' : Console.WriteLine("game refreshed");
-
-                                break;
-                            default: Console.WriteLine(reply);
-                                break;
+                    Console.Write(reply);
                         
-                        }
+                        this.serverStream.Close();
+                    switch (reply) {
+                        case "PLAYERS_FULL#":
+                            Console.Write("PLAYERS_FULL#");
+                            break;
+                        case "ALREADY_ADDED#":
+                            Console.Write("ALREADY_ADDED#");
+                            break;
+                        case "GAME_ALREADY_STARTED#":
+                            Console.Write("GAME_ALREADY_STARTED#");
+                            break;
+                        default:
+                            g.clientConnected(reply);
+                            break;
+                              
+                    }
+                       
+                        
                        
                     }
                 }
