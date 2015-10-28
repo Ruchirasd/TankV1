@@ -19,8 +19,10 @@ namespace TankV1
 
 
 
-        private void control_KeyDown(object sender, KeyEventArgs e)
+      
+        private void keyDown(object sender, KeyEventArgs e)
         {
+
             switch (e.KeyData)
             {
                 case Keys.W:
@@ -45,7 +47,7 @@ namespace TankV1
                     }
                 default:
                     {
-                        MessageBox.Show("you pressed "+e.KeyData);
+                        MessageBox.Show("you pressed " + e.KeyData);
                         break;
                     }
             }

@@ -26,7 +26,12 @@ namespace TankV1
 
             //Test t = new Test();
             Illustrate i = new Illustrate();
-            i.Show();
+            
+            
+            
+            
+            
+            i.ShowDialog();
 
 
         }

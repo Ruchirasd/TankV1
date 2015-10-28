@@ -37,6 +37,8 @@
             this.ClientSize = new System.Drawing.Size(664, 336);
             this.Name = "Illustrate";
             this.Text = "Illustrate";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyDown);
+
             this.ResumeLayout(false);
 
         }
