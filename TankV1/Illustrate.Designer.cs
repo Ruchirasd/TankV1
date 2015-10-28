@@ -34,11 +34,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 336);
+            this.ClientSize = new System.Drawing.Size(951, 378);
             this.Name = "Illustrate";
             this.Text = "Illustrate";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyDown);
-
             this.ResumeLayout(false);
 
         }

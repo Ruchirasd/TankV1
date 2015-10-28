@@ -8,6 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
+
 namespace TankV1
 {
     public partial class Illustrate : Form
@@ -25,24 +31,102 @@ namespace TankV1
 
             switch (e.KeyData)
             {
-                case Keys.W:
+                case Keys.Up:
                     {
-                        MessageBox.Show("you pressed w");
+
+                        try
+                        {
+                            TcpClient client = new TcpClient();
+                            client.Connect("127.0.0.1", 6000);
+                            BinaryWriter writer = new BinaryWriter(client.GetStream());
+                            Byte[] tempStr = Encoding.ASCII.GetBytes("UP#");
+                            writer.Write(tempStr);
+                            client.Close();
+                            if (client.Connected)
+                            {
+                                Console.WriteLine("connected......");
+                            }
+
+                        }
+                        catch (SocketException a)
+                        {
+                            Console.WriteLine("unable to connect server");
+
+                        }
+                        MessageBox.Show("you pressed uparroow");
                         break;
                     }
-                case Keys.B:
+                case Keys.Down:
                     {
-                        MessageBox.Show("you pressed b");
+
+
+                        try
+                        {
+                            TcpClient client = new TcpClient();
+                            client.Connect("127.0.0.1", 6000);
+                            BinaryWriter writer = new BinaryWriter(client.GetStream());
+                            Byte[] tempStr = Encoding.ASCII.GetBytes("DOWN#");
+                            writer.Write(tempStr);
+                            client.Close();
+                            if (client.Connected)
+                            {
+                                Console.WriteLine("connected......");
+                            }
+
+                        }
+                        catch (SocketException a)
+                        {
+                            Console.WriteLine("unable to connect server");
+
+                        }
+                        MessageBox.Show("you pressed down arrow");
                         break;
                     }
-                case Keys.F11:
+                case Keys.Right:
                     {
-                        MessageBox.Show("you pressed F11");
+                        try
+                        {
+                            TcpClient client = new TcpClient();
+                            client.Connect("127.0.0.1", 6000);
+                            BinaryWriter writer = new BinaryWriter(client.GetStream());
+                            Byte[] tempStr = Encoding.ASCII.GetBytes("RIGHT#");
+                            writer.Write(tempStr);
+                            client.Close();
+                            if (client.Connected)
+                            {
+                                Console.WriteLine("connected......");
+                            }
+
+                        }
+                        catch (SocketException a)
+                        {
+                            Console.WriteLine("unable to connect server");
+
+                        }
+                        MessageBox.Show("you pressed right");
                         break;
                     }
-                case Keys.Escape:
+                case Keys.Left:
                     {
-                        this.Close();
+                        try
+                        {
+                            TcpClient client = new TcpClient();
+                            client.Connect("127.0.0.1", 6000);
+                            BinaryWriter writer = new BinaryWriter(client.GetStream());
+                            Byte[] tempStr = Encoding.ASCII.GetBytes("LEFT#");
+                            writer.Write(tempStr);
+                            client.Close();
+                            if (client.Connected)
+                            {
+                                Console.WriteLine("connected......");
+                            }
+
+                        }
+                        catch (SocketException a)
+                        {
+                            Console.WriteLine("unable to connect server");
+
+                        }
                         break;
                     }
                 default:
