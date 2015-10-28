@@ -21,11 +21,12 @@ namespace TankV1
             //Console.WriteLine("1");
 
             Connection c = new Connection();
-            c.ConnectToServer();
-            c.ReceiveData();
+           // c.ConnectToServer();
+           // c.ReceiveData();
 
             //Test t = new Test();
-
+            Illustrate i = new Illustrate();
+            i.Show();
 
 
         }
