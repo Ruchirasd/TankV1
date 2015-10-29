@@ -28,6 +28,7 @@ namespace TankV1
             
                 listner.Start();
                 Console.Write("Server started.....");
+            Console.WriteLine();
 
                 Socket connection;
                

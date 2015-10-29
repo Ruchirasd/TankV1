@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Canvas_Structure\Brick.cs" />
+    <Compile Include="Canvas_Structure\CanvasStructure.cs" />
+    <Compile Include="Canvas_Structure\Coin.cs" />
+    <Compile Include="Canvas_Structure\LifePack.cs" />
+    <Compile Include="Canvas_Structure\Stone.cs" />
+    <Compile Include="Canvas_Structure\Water.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,9 +87,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Client\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
