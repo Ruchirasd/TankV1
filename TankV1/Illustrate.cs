@@ -18,11 +18,24 @@ namespace TankV1
 {
     public partial class Illustrate : Form
     {
-        public Illustrate()
+        private static Illustrate illustrate;
+        private Connection connection;
+        private Illustrate()
         {
             InitializeComponent();
+            connection = new Connection();
+            textBox1.ReadOnly = true;
+           
         }
 
+
+        public static Illustrate getGUI() {
+            if (illustrate == null) {
+                illustrate = new Illustrate();
+            }
+
+            return illustrate;
+        }
 
 
       
@@ -34,107 +47,67 @@ namespace TankV1
                 case Keys.Up:
                     {
 
-                        try
-                        {
-                            TcpClient client = new TcpClient();
-                            client.Connect("127.0.0.1", 6000);
-                            BinaryWriter writer = new BinaryWriter(client.GetStream());
-                            Byte[] tempStr = Encoding.ASCII.GetBytes("UP#");
-                            writer.Write(tempStr);
-                            client.Close();
-                            if (client.Connected)
-                            {
-                                Console.WriteLine("connected......");
-                            }
-
-                        }
-                        catch (SocketException a)
-                        {
-                            Console.WriteLine("unable to connect server");
-
-                        }
-                        MessageBox.Show("you pressed uparroow");
+                        connection.ConnectToServer("UP#");
                         break;
                     }
                 case Keys.Down:
                     {
-
-
-                        try
-                        {
-                            TcpClient client = new TcpClient();
-                            client.Connect("127.0.0.1", 6000);
-                            BinaryWriter writer = new BinaryWriter(client.GetStream());
-                            Byte[] tempStr = Encoding.ASCII.GetBytes("DOWN#");
-                            writer.Write(tempStr);
-                            client.Close();
-                            if (client.Connected)
-                            {
-                                Console.WriteLine("connected......");
-                            }
-
-                        }
-                        catch (SocketException a)
-                        {
-                            Console.WriteLine("unable to connect server");
-
-                        }
-                        MessageBox.Show("you pressed down arrow");
+                        
+                        connection.ConnectToServer("DOWN#");  
                         break;
                     }
                 case Keys.Right:
                     {
-                        try
-                        {
-                            TcpClient client = new TcpClient();
-                            client.Connect("127.0.0.1", 6000);
-                            BinaryWriter writer = new BinaryWriter(client.GetStream());
-                            Byte[] tempStr = Encoding.ASCII.GetBytes("RIGHT#");
-                            writer.Write(tempStr);
-                            client.Close();
-                            if (client.Connected)
-                            {
-                                Console.WriteLine("connected......");
-                            }
 
-                        }
-                        catch (SocketException a)
-                        {
-                            Console.WriteLine("unable to connect server");
-
-                        }
-                        MessageBox.Show("you pressed right");
+                        connection.ConnectToServer("RIGHT#");
                         break;
                     }
                 case Keys.Left:
                     {
-                        try
-                        {
-                            TcpClient client = new TcpClient();
-                            client.Connect("127.0.0.1", 6000);
-                            BinaryWriter writer = new BinaryWriter(client.GetStream());
-                            Byte[] tempStr = Encoding.ASCII.GetBytes("LEFT#");
-                            writer.Write(tempStr);
-                            client.Close();
-                            if (client.Connected)
-                            {
-                                Console.WriteLine("connected......");
-                            }
-
-                        }
-                        catch (SocketException a)
-                        {
-                            Console.WriteLine("unable to connect server");
-
-                        }
+                       
+                        connection.ConnectToServer("LEFT#");
+                        break;
+                    }
+                case Keys.Space:
+                    {
+                        connection.ConnectToServer("SHOOT#");
                         break;
                     }
                 default:
                     {
-                        MessageBox.Show("you pressed " + e.KeyData);
+                       
                         break;
                     }
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pass_msg(object sender, KeyEventArgs e)
+        {
+            keyDown(sender,e);
+        }
+
+
+        public  void setTextData(String [,] cells) {
+            String txt="";
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10 ; j++)
+                {
+                    txt+=cells[i,j]+"  ";
+                }
+                txt +=  Environment.NewLine;
+            }
+            textBox1.Text =txt;
+        }
+
+        private void Illustrate_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

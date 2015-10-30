@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Threading;
+
 
 
 
@@ -18,22 +16,25 @@ namespace TankV1
         static void Main()
         {
 
-            //Console.WriteLine("1");
-
             Connection c = new Connection();
-            c.ConnectToServer();
-           // c.ReceiveData();
+            c.ConnectToServer("JOIN#");
+
+
+            Thread t = new Thread(runGUI);
+            t.Start();
+
+            c.ReceiveData();
 
             //Test t = new Test();
-            Illustrate i = new Illustrate();
             
-            
-            
-            
-            
+
+
+        }
+
+        static void runGUI(){
+
+            Illustrate i = Illustrate.getGUI();
             i.ShowDialog();
-
-
         }
     }
 }

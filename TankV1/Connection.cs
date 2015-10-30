@@ -15,20 +15,19 @@ namespace TankV1
     {
         public const string SERVER_IP = "127.0.0.1";
         public const int SERVER_PORT = 7000;
-        private BinaryWriter writer;
+        private   BinaryWriter writer;
         private const string CLIENT_IP = "localhost";
         private const int CLIENT_PORT = 6000;
-        private GameCanvas g = new GameCanvas();
-        private TcpClient client;
+        private static GameCanvas g = new GameCanvas();
+        private  TcpClient client;
         private TcpListener listner;
         private NetworkStream serverStream; 
 
-        public void ReceiveData() {
+        public void  ReceiveData() {
             listner = new TcpListener(IPAddress.Parse(SERVER_IP), SERVER_PORT);
             
                 listner.Start();
                 Console.Write("Server started.....");
-            Console.WriteLine();
 
                 Socket connection;
                
@@ -59,13 +58,34 @@ namespace TankV1
                         this.serverStream.Close();
                     switch (reply) {
                         case "PLAYERS_FULL#":
-                            Console.Write("PLAYERS_FULL#");
+                            Console.Write("PLAYERS_FULL");
                             break;
                         case "ALREADY_ADDED#":
-                            Console.Write("ALREADY_ADDED#");
+                            Console.Write("ALREADY_ADDED");
                             break;
                         case "GAME_ALREADY_STARTED#":
-                            Console.Write("GAME_ALREADY_STARTED#");
+                            Console.Write("GAME_ALREADY_STARTED");
+                            break;
+                        case "OBSTACLE#":
+                            Console.Write("OBSTACLE");
+                            break;
+                        case "CELL_OCCUPIED#":
+                            Console.Write("CELL_OCCUPIED");
+                            break;
+                        case "DEAD#":
+                            Console.Write("DEAD");
+                            break;
+                        case "TOO_QUICK#":
+                            Console.Write("TOO_QUICK");
+                            break;
+                        case "GAME_HAS_FINISHED#":
+                            Console.Write("GAME_HAS_FINISHED");
+                            break;
+                        case "GAME_NOT_STARTED_YET#":
+                            Console.Write("GAME_NOT_STARTED_YET");
+                            break;
+                        case "INVALID_CELL#":
+                            Console.Write("INVALID_CELL");
                             break;
                         default:
                             g.clientConnected(reply);
@@ -84,17 +104,18 @@ namespace TankV1
             }
 
 
-        public void ConnectToServer() {
+        public  void ConnectToServer(String msg)
+        {
 
             try
             {
                 client = new TcpClient();
                 client.Connect(CLIENT_IP, CLIENT_PORT);
-                this.writer = new BinaryWriter(client.GetStream());
-                Byte[] tempStr = Encoding.ASCII.GetBytes("JOIN#");
-                this.writer.Write(tempStr);
+                writer = new BinaryWriter(client.GetStream());
+                Byte[] tempStr = Encoding.ASCII.GetBytes(msg);
+                writer.Write(tempStr);
                 client.Close();
-                if (this.client.Connected)
+                if (client.Connected)
                 {
                     Console.WriteLine("connected......");
                 }

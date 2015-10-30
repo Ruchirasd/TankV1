@@ -32,15 +32,17 @@ namespace TankV1
         }
 
         public void printCanvas() {
-            for (int i = 0; i < 10;i++ )
+
+            //Illustrate.getGUI().setTextData(cells);
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < 10;j++ )
+                for (int j = 0; j < 10; j++)
                 {
-                    Console.Write(cells[i, j]+" ");
+                    Console.Write(cells[i, j] + " ");
                 }
                 Console.WriteLine();
             }
-        
+
         }
 
 
@@ -145,7 +147,7 @@ namespace TankV1
             String[] temp;
 
             //Store player infor in a 2D array
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < val.Length-2; i++) {
                 //Console.Write("Error value check"+val[i + 1][0]);
                 if ((val[i+1])[0] != 'P')
                     break;
@@ -162,11 +164,30 @@ namespace TankV1
                 if (playerInfo[i, 1] == null)
                     break;
                 xy = playerInfo[i,1].Split(',');
-                cells[Int32.Parse(xy[1]), Int32.Parse(xy[0])] = playerInfo[i,0];
+                
+
+                bool keepGoing = true;
+
+                for (int k = 0; k < 10 && keepGoing; k++)
+                {
+                    for (int j = 0; j < 10 && keepGoing; j++)
+                    {
+                        if(cells[k, j].Equals(playerInfo[i, 0]))
+                        {
+                            cells[k, j] = "N";
+                            keepGoing = false;
+                        }
+                        
+
+                    }
+                }
+
+                cells[Int32.Parse(xy[1]), Int32.Parse(xy[0])] = playerInfo[i, 0];
+
             }
 
             String bricksStr = val[(val.Length) - 1];
-            bricksStr= bricksStr.Remove(bricksStr.Length - 1);
+            bricksStr= bricksStr.Remove(bricksStr.Length - 2);
             String[] brickArr = bricksStr.Split(';');
             bricksCondition = new String[this.noOfBricks, 3];
 
